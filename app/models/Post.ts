@@ -36,6 +36,10 @@ const PostSchema = new Schema({
             },
             message: 'Input description or image is required'
         }
+    },
+    date: {
+        type: Date,
+        required: true,
     }
 });
 
