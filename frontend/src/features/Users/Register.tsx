@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { RegisterMutation } from '../../types';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Avatar, Box, Button, Container, Link, TextField, Typography } from '@mui/material';
+import {Avatar, Box, Button, CircularProgress, Container, Link, TextField, Typography} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
-import { selectRegisterError } from './usersSlice.ts';
-import { register } from './usersThunk.ts';
+import {selectRegisterError, selectRegisterLoading} from './usersSlice.ts';
+import {register} from "./usersThunk.ts";
 
 const Register = () => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(selectRegisterError);
   const navigate = useNavigate();
+  const loading = useAppSelector(selectRegisterLoading);
 
   const [state, setState] = useState<RegisterMutation>({
     username: '',
@@ -89,6 +90,7 @@ const Register = () => {
             </Grid>
           </Grid>
           <Button
+              endIcon={loading && <CircularProgress size={24} />}
             type="submit"
             fullWidth
             variant="contained"
