@@ -56,7 +56,7 @@ const run = async () => {
         text: 'Notion. I know it\'s kind of popular, but I still feel like most people don\'t realize how powerful it is for organizing literally everything—from grocery lists to work projects.',
         date: new Date(),
         }, {
-            user: User1,
+            user: User2,
             post: Post2,
             text: 'Clipboard history manager (like Paste on Mac). Total lifesaver when you copy/paste a lot. Can’t believe I worked without one for so long.',
         date: new Date(),

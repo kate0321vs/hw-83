@@ -17,7 +17,7 @@ postsRouter.get("/", async (req, res) => {
 
 postsRouter.get("/:id", async (req, res) => {
     try {
-        const post = await Post.findById(req.params.id);
+        const post = await Post.findById(req.params.id).populate("user", "username -_id");
         if (!post) {
              res.status(404).send({error: "Post not found"});
             return
