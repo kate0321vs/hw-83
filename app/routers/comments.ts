@@ -8,13 +8,13 @@ const commentsRouter = express.Router();
 commentsRouter.get("/", async (req, res) => {
     try {
         const {id_post} = req.query;
-        let response
+        let comments;
         if (id_post) {
-            response = await Comment.find({post: id_post}).populate("user", "username").sort({createdAt: -1});
+            comments = await Comment.find({post: id_post}).populate("user", "username").sort({createdAt: -1});
         } else {
-            response = await Comment.find().populate("user", "username").sort({createdAt: -1})
+            comments = await Comment.find().populate("user", "username").sort({createdAt: -1})
         }
-        res.send(response);
+        res.send(comments);
     } catch (e) {
         res.status(500).send(e);
     }

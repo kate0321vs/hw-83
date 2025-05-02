@@ -21,7 +21,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
   return (
     <>
         <IconButton onClick={handleClick}>
-            <AccountCircleIcon style={{color: 'white', fontSize: '2rem'}} />
+            <AccountCircleIcon style={{color: 'white', fontSize: '2.3rem'}} />
         </IconButton>
       <Menu
         anchorEl={anchorEl}

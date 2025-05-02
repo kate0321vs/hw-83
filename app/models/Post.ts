@@ -23,7 +23,7 @@ const PostSchema = new Schema({
         type: String,
         validate: {
             validator: async function (this: HydratedDocument<IPost>)  {
-                return Boolean(!this.image && !this.description);
+                return Boolean(this.image || this.description);
             },
             message: 'Input description or image is required'
         }
@@ -32,7 +32,7 @@ const PostSchema = new Schema({
         type: String,
         validate: {
             validator: function (this: HydratedDocument<IPost>)  {
-                return Boolean(!this.image && !this.description);
+                return Boolean(this.image || this.description);
             },
             message: 'Input description or image is required'
         }

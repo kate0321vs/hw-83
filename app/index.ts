@@ -18,7 +18,7 @@ app.use("/comments", commentsRouter);
 
 
 const run = async () => {
-    await mongoose.connect('mongodb://localhost/music');
+    await mongoose.connect('mongodb://localhost/forum');
 
     app.listen(port, () => {
         console.log(`Listening on port ${port}`);
