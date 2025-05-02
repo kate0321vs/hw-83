@@ -27,41 +27,44 @@ const FullPost = () => {
 
     return (
         <>
-            {loading ?
-                <Spinner/> :
-                oneFullPost ? (
-                <Box maxWidth="md">
-                    <Grid direction='row' >
-                    {oneFullPost.image && (
-                        <Grid size={6} sx={{ mb: 2 }}>
-                            <img
-                                src={baseURL + '/' + oneFullPost.image}
-                                alt={oneFullPost.title}
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
-                                    borderRadius: '8px',
-                                    border: '1px solid #ccc',
-                                }}
-                            />
+            {loading ? (
+                <Spinner />
+            ) : oneFullPost ? (
+                <Box maxWidth="md" mx="auto">
+                    <Grid container direction="row" spacing={2} alignItems="center">
+                        {oneFullPost.image && (
+                            <Grid sx={{ flex: 1 }}>
+                                <img
+                                    src={baseURL + '/' + oneFullPost.image}
+                                    alt={oneFullPost.title}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                        borderRadius: '8px',
+                                        border: '1px solid #ccc',
+                                    }}
+                                />
+                            </Grid>
+                        )}
+                        <Grid sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                            <Typography variant="h4" component="div" sx={{ fontWeight: "bold", mb: 1 }}>
+                                {oneFullPost?.title}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                                At {dayjs(oneFullPost?.date).format("DD.MM.YYYY HH:mm")} by {oneFullPost.user.username}
+                            </Typography>
+                            <Typography component="p">
+                                {oneFullPost?.description}
+                            </Typography>
                         </Grid>
-                    )}
-                    <Grid>
-                        <Typography variant="h4" component="div" sx={{ fontWeight: "bold", mb: 1, }}>
-                            {oneFullPost?.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                            At {dayjs(oneFullPost?.date).format("DD.MM.YYYY HH:mm")} by {oneFullPost.user.username}
-                        </Typography>
-                        <Typography component="p">
-                            {oneFullPost?.description}
-                        </Typography>
                     </Grid>
-                        {user && <CommentForm id_post={id_post} />}
-                    <Comments/>
-                    </Grid>
+
+                    {user && <CommentForm id_post={id_post} />}
+                    <Comments />
                 </Box>
-            ) : <p>Not Found</p> }
+            ) : (
+                <p>Not Found</p>
+            )}
         </>
 
     );

@@ -46,7 +46,6 @@ const CommentForm: React.FC <Props> = ({id_post}) => {
                 <Grid container direction="column" spacing={2} mb={3}>
                     <Grid size={12}>
                         <TextField
-                            sx = {{width: "700px"}}
                             multiline
                             id="text"
                             name="text"
@@ -58,12 +57,16 @@ const CommentForm: React.FC <Props> = ({id_post}) => {
                         />
                     </Grid>
                     <Grid>
-                        <Button type="submit"
+                        <Grid container justifyContent="flex-end">
+                            <Button
+                                type="submit"
                                 variant="contained"
                                 color="primary"
-                                endIcon={loading ? <CircularProgress size={24} /> : <SendIcon />}>
-                            Send
-                        </Button>
+                                endIcon={loading ? <CircularProgress size={24} /> : <SendIcon />}
+                            >
+                                Send
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
             </form>

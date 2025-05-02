@@ -10,7 +10,7 @@ interface Props {
 const FormItem: React.FC<Props> = ({author, text, date}) => {
 
     return (
-        <Card variant="outlined" sx={{ maxWidth: 700, mb: 2 }}>
+        <Card variant="outlined" sx={{ mb: 2 }}>
             <CardContent sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <Typography variant="body1" maxWidth='80%'>
                     <strong>{author}</strong>: {text}
