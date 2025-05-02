@@ -10,9 +10,9 @@ commentsRouter.get("/", async (req, res) => {
         const {id_post} = req.query;
         let comments;
         if (id_post) {
-            comments = await Comment.find({post: id_post}).populate("user", "username").sort({createdAt: -1});
+            comments = await Comment.find({post: id_post}).populate("user", "username").sort({date: -1});
         } else {
-            comments = await Comment.find().populate("user", "username").sort({createdAt: -1})
+            comments = await Comment.find().populate("user", "username").sort({date: -1})
         }
         res.send(comments);
     } catch (e) {
@@ -27,8 +27,11 @@ commentsRouter.post("/", auth, async (req, res, next) => {
             post: req.body.post,
             user: user._id,
             text: req.body.text,
+            date: new Date(),
         });
+
         await newComment.save();
+        res.send(newComment);
     } catch (e) {
         if(e instanceof mongoose.Error.ValidationError) {
             res.status(400).send(e.message)

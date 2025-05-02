@@ -39,6 +39,7 @@ postsRouter.post("/", auth, imagesUpload.single('image'), async (req, res, next)
             date: new Date(),
         });
         await newPost.save();
+        res.send(newPost);
     } catch (e) {
         if (e instanceof mongoose.Error.ValidationError) {
             res.status(400).send(e.message);

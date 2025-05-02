@@ -46,7 +46,6 @@ export interface IPost {
 }
 
 export interface IPostMutation {
-    user: string,
     title: string,
     description: string,
     image:  File | null,
@@ -57,10 +56,10 @@ export interface IComment {
     user: {username: string},
     post: string
     text: string,
+    date: string,
 }
 
 export interface ICommentMutation {
-    user: string,
     post: string
     text: string,
 }

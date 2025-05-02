@@ -18,7 +18,7 @@ const Comments = () => {
             {loading ? <Spinner/>
                 : (comments.length > 0 ?
                     comments.map((comment) => (
-                        <CommentItem key={comment._id} author={comment.user.username} text={comment.text} />
+                        <CommentItem key={comment._id} author={comment.user.username} text={comment.text} date={comment.date} />
                     )) :
                     <Typography>No comments yet</Typography>)
             }
